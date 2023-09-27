@@ -29,7 +29,7 @@ const handleQueryChange = newQuery => {
         setIsLoading(true);
         const result = query.slice(query.indexOf('/') + 1);
         const data = await getImages(result, page);
-        setImages([...images, ...data.hits]);
+        setImages(prevState => [...prevState, ...data.hits]);
         setLoadedImgCount(Math.ceil(data.totalHits / 12));
       } catch (error) {
         console.error("Помилка при отриманні даних:", error);
