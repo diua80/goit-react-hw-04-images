@@ -5,22 +5,21 @@ export const ImageGalleryItem = ({ imageUrl, alt, imageLargeUrl }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const toggleOpenModal = () => setIsModalOpen (prevState => !prevState)
 
   return (
       <li className="ImageGalleryItem">
         <img
           src={imageUrl}
           alt={alt}
-          onClick={openModal}
+          onClick={toggleOpenModal}
         />
         {isModalOpen && (
           <ImgModal
           imgLargeUrl={imageLargeUrl}
             alt={alt}
             isModalOpen={isModalOpen}
-            onClose={closeModal}
+            onClose={toggleOpenModal}
           />
         )}
       </li>
